@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!-- Each chapter in the comic will be represented by a 'Chapter item' -->
+<!-- The chapter page will have a list of these items the user can select -->
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:padding="18dp"
+    android:padding="16dp"
     android:background="@android:color/white"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
     <TextView

@@ -1,22 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    >
+<!-- This code controls the navigational bar at the bottom of the Filter/Search Screen -->
 
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <!-- The filter icon -->
     <item
         android:id="@+id/action_filter"
-        android:enabled="true"
         android:title="Filter"
         android:icon="@drawable/ic_filter_list_white_24dp"
-        app:showAsAction="ifRoom"
-        />
+        android:enabled="true"
+        app:showAsAction="ifRoom" />
 
+    <!-- The search icon -->
     <item
         android:id="@+id/action_search"
-        android:enabled="true"
         android:title="Search"
         android:icon="@drawable/ic_search_white_24dp"
-        app:showAsAction="ifRoom"
-        />
+        android:enabled="true"
+        app:showAsAction="ifRoom" />
 
 </menu>

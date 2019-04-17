@@ -1,56 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!-- This is the XML for the filter/search page-->
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="@android:color/white"
     android:layout_height="match_parent"
+    android:background="@android:color/white"
     tools:context=".FilterSearchActivity">
 
     <LinearLayout
-        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
         <LinearLayout
-            android:orientation="horizontal"
-            android:weightSum="4"
-            android:padding="8dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="8dp"
+            android:weightSum="4">
 
+            <!-- Page title-->
             <TextView
-                android:text="ALL COMIC"
-                android:textSize="24sp"
-                android:textStyle="bold"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
                 android:layout_weight="2"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content" />
+                android:text="FILTER AND SEARCH"
+                android:textSize="24sp"
+                android:textStyle="bold" />
 
             <View
-                android:background="@drawable/horizontal_line"
-                android:layout_weight="2"
-                android:layout_gravity="center_vertical"
                 android:layout_width="0dp"
-                android:layout_height="3dp" />
+                android:layout_height="3dp"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="2"
+                android:background="@drawable/horizontal_line" />
 
         </LinearLayout>
-
+        <!-- RecyclerView will show all comics found by searches and filters -->
         <android.support.v7.widget.RecyclerView
             android:id="@+id/recycler_filter_search"
             android:layout_width="match_parent"
             android:layout_height="match_parent"></android.support.v7.widget.RecyclerView>
     </LinearLayout>
 
+    <!-- Navigation bar at bottom of page with filter and search icon -->
     <android.support.design.widget.BottomNavigationView
         android:id="@+id/bottom_nav"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:background="@color/columnColor"
-        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-        app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-        app:itemTextColor="@android:color/white"
         app:itemIconTint="@android:color/white"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"></android.support.design.widget.BottomNavigationView>
+        app:itemTextColor="@android:color/white"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+        app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"></android.support.design.widget.BottomNavigationView>
 
 </RelativeLayout>

@@ -1,29 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v7.widget.CardView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<!-- This controls the dialog which appears in the filter function popup -->
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    app:cardCornerRadius="8dp"
     android:layout_width="match_parent"
-    android:layout_height="500dp">
+    android:layout_height="500dp"
+    app:cardCornerRadius="6dp">
 
     <RelativeLayout
-        android:padding="8dp"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:padding="6dp">
 
+        <!-- This is the text box the user will type their filter query -->
+        <!-- The box will try to autocomplete the category being filtered -->
         <AutoCompleteTextView
             android:id="@+id/txt_category"
-            android:hint="Enter your category"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:hint="Enter a category to filter" />
 
         <android.support.design.chip.ChipGroup
             android:id="@+id/chipGroup"
-            android:layout_marginTop="16dp"
-            android:layout_below="@+id/txt_category"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"></android.support.design.chip.ChipGroup>
-
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txt_category"
+            android:layout_marginTop="16dp"></android.support.design.chip.ChipGroup>
 
     </RelativeLayout>
 

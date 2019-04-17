@@ -1,43 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!-- After a comic has been selected, user will be taken to chapter list page-->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@android:color/white"
+    android:orientation="vertical"
     tools:context=".ChaptersActivity">
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar"
-        android:minHeight="?attr/actionBarSize"
-        android:background="@color/columnColor"
-        app:titleTextColor="@color/textColor"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"></android.support.v7.widget.Toolbar>
+        android:layout_height="wrap_content"
+        android:background="@color/columnColor"
+        android:minHeight="?attr/actionBarSize"
+        app:titleTextColor="@color/textColor"></android.support.v7.widget.Toolbar>
 
     <LinearLayout
-        android:orientation="vertical"
-        android:padding="16sp"
-        android:background="@android:color/black"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:background="@android:color/black"
+        android:orientation="vertical"
+        android:padding="16sp">
 
+        <!-- There will be a sub-title containing number of chapters-->
         <TextView
             android:id="@+id/txt_chapter_name"
-            android:text="CHAPTER (10)"
-            android:textSize="20sp"
-            android:textColor="@android:color/white"
-            android:textStyle="bold"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:text="CHAPTER (10)"
+            android:textColor="@android:color/white"
+            android:textSize="20sp"
+            android:textStyle="bold" />
 
     </LinearLayout>
 
+    <!-- The RecyclerView will list all the chapters retrieved from Firebase -->
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recycler_chapter"
-        android:padding="8dp"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"></android.support.v7.widget.RecyclerView>
+        android:layout_height="match_parent"
+        android:padding="8dp"></android.support.v7.widget.RecyclerView>
 
 </LinearLayout>

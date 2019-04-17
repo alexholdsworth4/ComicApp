@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.github.chrisbanes.photoview.PhotoView
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<!-- This XML page is used for the comic viewing experience -->
+<!-- As the image is retrieved from Firebase and takes up the full screen, -->
+<!-- only the id for page_image is needed from this page -->
+
+<!-- The page turn effect was created by Chris Banes and can be found here:  -->
+<!-- https://github.com/chrisbanes/PhotoView  -->
+
+<com.github.chrisbanes.photoview.PhotoView xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/page_image"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
-</com.github.chrisbanes.photoview.PhotoView>
+    android:layout_height="match_parent"></com.github.chrisbanes.photoview.PhotoView>
