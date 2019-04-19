@@ -17,7 +17,7 @@ public class SplashScreen extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //Splash page should be present for 3 seconds when application is started
-        //After this time has occurred, the user should be taken to Main Activity (Home page)
+        //After this time has occurred, the user should be taken to sign up page
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
