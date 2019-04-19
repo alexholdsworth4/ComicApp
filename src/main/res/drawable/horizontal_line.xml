@@ -19,7 +19,7 @@
         <shape android:shape="rectangle">
 
 
-            <solid android:color="@color/columnColor"/>
+            <solid android:color="@color/themeColor"/>
         </shape>
     </item>
 

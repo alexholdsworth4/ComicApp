@@ -11,7 +11,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/columnColor">
+        android:background="@color/themeColor">
 
         <!-- There is a back button used to quickly move to previous chapter-->
         <View

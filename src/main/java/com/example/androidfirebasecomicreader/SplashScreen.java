@@ -1,13 +1,15 @@
-//Class: SplashScreen
-// Author: B5017070
-// Purpose: Controls functionality for the splash screen
+/*
+Class: SplashScreen
+Author: B5017070
+Purpose: Controls functionality for the splash screen
+*/
 
 package com.example.androidfirebasecomicreader;
 
 import android.content.Intent;
+import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 
 public class SplashScreen extends AppCompatActivity {
 
@@ -19,8 +21,8 @@ public class SplashScreen extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                startActivity(new Intent(SplashScreen.this,MainActivity.class));
+                startActivity(new Intent(SplashScreen.this, SignUpActivity.class));
             }
-        },3000);
+        }, 3000);
     }
 }

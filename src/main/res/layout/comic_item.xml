@@ -17,7 +17,7 @@
 
             <!-- Each comic will have an image followed by comic name -->
             <ImageView
-                android:id="@+id/image_comic"
+                android:id="@+id/comic_image"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:scaleType="fitXY" />
@@ -29,7 +29,6 @@
                 android:layout_gravity="bottom"
                 android:background="#80F44A3F"
                 android:padding="6dp"
-                android:text="COMIC"
                 android:textColor="@android:color/white"
                 android:textStyle="bold" />
 

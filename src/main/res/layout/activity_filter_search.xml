@@ -46,11 +46,11 @@
 
     <!-- Navigation bar at bottom of page with filter and search icon -->
     <android.support.design.widget.BottomNavigationView
-        android:id="@+id/bottom_nav"
+        android:id="@+id/bottom_nav_bar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:background="@color/columnColor"
+        android:background="@color/themeColor"
         app:itemIconTint="@android:color/white"
         app:itemTextColor="@android:color/white"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light"

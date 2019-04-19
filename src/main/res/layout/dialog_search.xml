@@ -14,7 +14,7 @@
 
         <!-- This is the text box the user will type their search query -->
         <EditText
-            android:id="@+id/edt_search"
+            android:id="@+id/txt_search"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Enter a comic book name" />

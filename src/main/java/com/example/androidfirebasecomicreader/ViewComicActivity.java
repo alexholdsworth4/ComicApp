@@ -1,6 +1,8 @@
-//Class: ViewComicActivity
-// Author: B5017070
-// Purpose: Controls functionality for the comic viewing experience
+/*
+Class: ViewComicActivity
+Author: B5017070
+Purpose: Controls functionality for the comic viewing experience
+*/
 
 package com.example.androidfirebasecomicreader;
 
@@ -11,7 +13,7 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.androidfirebasecomicreader.Adapter.MyViewPagerAdapter;
+import com.example.androidfirebasecomicreader.Adapter.ViewPagerAdapter;
 import com.example.androidfirebasecomicreader.Common.Common;
 import com.example.androidfirebasecomicreader.Model.Chapter;
 import com.wajahatkarim3.easyflipviewpager.BookFlipPageTransformer;
@@ -20,7 +22,7 @@ public class ViewComicActivity extends AppCompatActivity {
 
     //Comic viewing fields
     TextView txt_chapter_name;
-    View back, next;
+    View chapter_back, chapter_next;
     ViewPager viewPager;
 
     //Used to retrieve and save the current state of the comic
@@ -34,11 +36,11 @@ public class ViewComicActivity extends AppCompatActivity {
         txt_chapter_name = findViewById(R.id.txt_chapter_name);
 
         //The next and back buttons in the header toolbar
-        next = findViewById(R.id.chapter_next);
-        back = findViewById(R.id.chapter_back);
+        chapter_next = findViewById(R.id.chapter_next);
+        chapter_back = findViewById(R.id.chapter_back);
 
         //The next button can be pressed to take user to the next chapter in the comic
-        next.setOnClickListener(new View.OnClickListener() {
+        chapter_next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 //User will be given this message when they have reached final chapter and press button
@@ -48,12 +50,12 @@ public class ViewComicActivity extends AppCompatActivity {
                 else {
                     //If there is another chapter available, take the user to first page in next chapter
                     Common.chapterIndex++;
-                    fetchLinks(Common.chapterList.get(Common.chapterIndex));
+                    fetchChapterLinks(Common.chapterList.get(Common.chapterIndex));
                 }
             }
         });
         //The back button can be pressed to take user back a chapter in the comic
-        back.setOnClickListener(new View.OnClickListener() {
+        chapter_back.setOnClickListener(new View.OnClickListener() {
             @Override
             //User will be given this message when they are on the first chapter and press button
             //No functionality other than popup warning
@@ -63,18 +65,19 @@ public class ViewComicActivity extends AppCompatActivity {
                     //If there is a previous chapter available, take the user to first page in previous chapter
                 else {
                     Common.chapterIndex--;
-                    fetchLinks(Common.chapterList.get(Common.chapterIndex));
+                    fetchChapterLinks(Common.chapterList.get(Common.chapterIndex));
                 }
             }
         });
-        fetchLinks(Common.chapterSelected);
+        fetchChapterLinks(Common.chapterSelected);
 
     }
+
     //Changing pages between chapters and what functionality should occur
-    private void fetchLinks(Chapter chapter) {
+    private void fetchChapterLinks(Chapter chapter) {
         if (chapter.Links != null) {
             if (chapter.Links.size() > 0) {
-                MyViewPagerAdapter adapter = new MyViewPagerAdapter(getBaseContext(), chapter.Links);
+                ViewPagerAdapter adapter = new ViewPagerAdapter(getBaseContext(), chapter.Links);
                 viewPager.setAdapter(adapter);
 
                 txt_chapter_name.setText(Common.formatString(Common.chapterSelected.Name));

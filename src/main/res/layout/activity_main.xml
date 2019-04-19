@@ -16,7 +16,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/columnColor"
+            android:background="@color/themeColor"
             android:orientation="horizontal"
             android:padding="15dp"
             android:weightSum="9">
@@ -34,7 +34,7 @@
 
             <!-- Search icon next to title -->
             <ImageView
-                android:id="@+id/btn_show_filter_search"
+                android:id="@+id/btn_filter_search"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"

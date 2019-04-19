@@ -1,8 +1,10 @@
-//Class: MainActivity
-// Author: B5017070
-// Purpose: Controls functionality for the home page opened after splash screen.
-//          The user can swipe through banner images, select a comic to read or
-//          press search icon to filter/search for a specific comic.
+/*
+Class: MainActivity
+Author: B5017070
+Purpose: Controls functionality for the home page opened after splash screen.
+The user can swipe through banner images, select a comic to read or
+press search icon to filter/search for a specific comic.
+*/
 
 package com.example.androidfirebasecomicreader;
 
@@ -18,11 +20,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.androidfirebasecomicreader.Adapter.MyComicAdaptor;
-import com.example.androidfirebasecomicreader.Adapter.MySlideAdapter;
+import com.example.androidfirebasecomicreader.Adapter.BannerSlideAdapter;
+import com.example.androidfirebasecomicreader.Adapter.ComicAdapter;
 import com.example.androidfirebasecomicreader.Common.Common;
-import com.example.androidfirebasecomicreader.Interface.IBannerLoadDone;
-import com.example.androidfirebasecomicreader.Interface.IComicLoadDone;
+import com.example.androidfirebasecomicreader.Interface.IBanner;
+import com.example.androidfirebasecomicreader.Interface.IComicLoad;
 import com.example.androidfirebasecomicreader.Model.Comic;
 import com.example.androidfirebasecomicreader.Service.PicassoLoadingService;
 import com.google.firebase.database.DataSnapshot;
@@ -37,10 +39,10 @@ import java.util.List;
 import dmax.dialog.SpotsDialog;
 import ss.com.bannerslider.Slider;
 
-public class MainActivity extends AppCompatActivity implements IBannerLoadDone, IComicLoadDone {
+public class MainActivity extends AppCompatActivity implements IBanner, IComicLoad {
 
-    //Home page fields
-    Slider slider;
+    //MainActivity fields
+    Slider bannerSlider;
     SwipeRefreshLayout swipeRefreshLayout;
     RecyclerView recycler_comic;
     TextView txt_comic;
@@ -50,8 +52,8 @@ public class MainActivity extends AppCompatActivity implements IBannerLoadDone, 
     DatabaseReference banners, comics;
 
     //Declaring Listener fields
-    IBannerLoadDone bannerListener;
-    IComicLoadDone comicListener;
+    IBanner bannerListener;
+    IComicLoad comicListener;
 
     //Declaring alert dialogs for Main Activity
     android.app.AlertDialog alertDialog;
@@ -73,7 +75,7 @@ public class MainActivity extends AppCompatActivity implements IBannerLoadDone, 
         comicListener = this;
 
         //In the top right of page will be a search icon
-        btn_filter_search = (ImageView) findViewById(R.id.btn_show_filter_search);
+        btn_filter_search = (ImageView) findViewById(R.id.btn_filter_search);
         btn_filter_search.setOnClickListener(new View.OnClickListener() {
             //When the icon is pressed takes user to filter/search page.
             @Override
@@ -82,7 +84,7 @@ public class MainActivity extends AppCompatActivity implements IBannerLoadDone, 
             }
         });
 
-        slider = findViewById(R.id.slider);
+        bannerSlider = findViewById(R.id.slider);
         Slider.init(new PicassoLoadingService());
 
         //The user can refresh contents of page with vertical swipe gesture
@@ -93,16 +95,16 @@ public class MainActivity extends AppCompatActivity implements IBannerLoadDone, 
             //When the swipe gesture is done- the comics and banners should be reloaded
             @Override
             public void onRefresh() {
-                loadBanner();
-                loadComic();
+                loadSwipeBanner();
+                loadComics();
             }
         });
 
         swipeRefreshLayout.post(new Runnable() {
             @Override
             public void run() {
-                loadBanner();
-                loadComic();
+                loadSwipeBanner();
+                loadComics();
 
             }
         });
@@ -116,7 +118,7 @@ public class MainActivity extends AppCompatActivity implements IBannerLoadDone, 
     }
 
     //Method which loads the banner which appears in top half of screen
-    private void loadBanner() {
+    private void loadSwipeBanner() {
         banners.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             //The banner will be an array of images. These images will be referenced in Firebase.
@@ -140,7 +142,7 @@ public class MainActivity extends AppCompatActivity implements IBannerLoadDone, 
     }
 
     //Method which loads the list of comics which appears in bottom half of screen
-    private void loadComic() {
+    private void loadComics() {
         //The list of comics may be big and take a while to load.
         //Have included SpotsDialog to indicate to user the application hasn't crashed.
         alertDialog = new SpotsDialog.Builder().setContext(this)
@@ -175,10 +177,10 @@ public class MainActivity extends AppCompatActivity implements IBannerLoadDone, 
 
     }
 
-    //When the banner is done loading, set the MySlideAdapter
+    //When the banner is done loading, set the BannerSlideAdapter
     @Override
     public void onBannerLoadDoneListener(List<String> banners) {
-        slider.setAdapter(new MySlideAdapter(banners));
+        bannerSlider.setAdapter(new BannerSlideAdapter(banners));
     }
 
     //When the comics are done loading, list all the comics into the RecyclerView
@@ -186,7 +188,7 @@ public class MainActivity extends AppCompatActivity implements IBannerLoadDone, 
     public void onComicLoadDoneListener(List<Comic> comicList) {
         Common.comicList = comicList;
 
-        recycler_comic.setAdapter(new MyComicAdaptor(getBaseContext(), comicList));
+        recycler_comic.setAdapter(new ComicAdapter(getBaseContext(), comicList));
 
         //The banner and comics will be split by a sub-title
         //The sub-title will state how many comics are in the application
